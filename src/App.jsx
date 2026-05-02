@@ -78,9 +78,14 @@ function App() {
         return;
       }
       
+      // Ensure high resolution on mobile by dynamically scaling up
+      const currentWidth = mosaicRef.current.offsetWidth;
+      // Target at least 1500px width for the downloaded image to be crisp
+      const dynamicScale = Math.max(2, 1500 / currentWidth);
+      
       const canvas = await html2canvas(mosaicRef.current, {
         backgroundColor: '#ffffff',
-        scale: 2, // Higher quality
+        scale: dynamicScale, // High quality, especially on mobile
         onclone: (clonedDoc) => {
           // Remove animations and force opacity on cloned elements
           // because html2canvas restarts CSS animations on clones

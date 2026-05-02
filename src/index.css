@@ -262,9 +262,22 @@ button:hover {
   .title {
     font-size: 3.5rem;
   }
-  .mosaic-image {
-    width: 80px;
-    height: 80px;
+  .mosaic-section {
+    padding: 0.75rem;
+    border-width: 2px;
+  }
+  .mosaic-container {
+    gap: 0.25rem;
+  }
+  .mosaic-tile {
+    flex: 0 1 80px;
+  }
+  .mosaic-label {
+    font-size: 1rem;
+    margin-top: 0.25rem;
+  }
+  .mosaic-gap {
+    width: 20px;
   }
   .variant-letter-label {
     font-size: 2rem;
