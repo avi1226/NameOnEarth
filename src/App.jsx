@@ -13,7 +13,7 @@ function App() {
   const mosaicRef = useRef(null);
 
   const handleGenerate = () => {
-    const cleanName = inputName.trim();
+    const cleanName = inputName.trim().toUpperCase();
     if (!cleanName) {
       // Trigger shake animation
       setIsShaking(true);

@@ -2,12 +2,17 @@ import React from 'react';
 
 const NameInput = ({ inputName, setInputName, onGenerate, isShaking }) => {
   const handleInputChange = (e) => {
-    // Only allow letters and spaces
-    const val = e.target.value.replace(/[^A-Za-z ]/g, '').toUpperCase();
-    setInputName(val);
+    const val = e.target.value;
+    // Avoid modifying valid input synchronously (e.g. toUpperCase) to prevent 
+    // Android mobile keyboard composition from resetting the input field.
+    if (/[^a-zA-Z ]/.test(val)) {
+      setInputName(val.replace(/[^a-zA-Z ]/g, ''));
+    } else {
+      setInputName(val);
+    }
   };
 
-  const charCount = inputName.replace(/[^A-Z]/g, '').length;
+  const charCount = inputName.replace(/[^a-zA-Z]/g, '').length;
 
   return (
     <div className="input-section">
